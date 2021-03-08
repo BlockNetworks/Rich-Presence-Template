@@ -47,27 +47,27 @@ rpc.on('ready', () => {
 	if (config.Rich_Presence.Refresh) {
 		// Activity can only be set every 15 seconds
 		setInterval(() => {
-		//Create random party size every update
-		var partysize = Math.floor(Math.random() * (config.Rich_Presence.maxpartysize - 0 + 1)) + 0;
-		//Resetting the timer
-		var t1 = new Date();
-		var t2 = new Date ( t1 );
-		t2.setSeconds(t1.getSeconds() + config.Rich_Presence.countdown_start);
-		//Setting the activity again with updated values	
-		rpc.setActivity({
-			details: config.Rich_Presence.details,
-			state: config.Rich_Presence.state,
-			largeImageKey: config.Rich_Presence.file_bannername,
-			largeImageText: config.Rich_Presence.bannername,
-			smallImageKey: config.Rich_Presence.file_username,
-			smallImageText: config.Rich_Presence.username,
-			instance: false,
-			partySize: partysize,
-			partyMax: config.Rich_Presence.maxpartysize,
-			startTimestamp: t1,
-			endTimestamp: t2
-		}).then(console.clear(), console.log(banner), console.log(`Updated the RPC ${++config.Dont_Touch.updatecounter} time(s)!`)).catch(err => {});
-	  }, (config.Rich_Presence.Refresh_time * 1000));
+			// Create random party size every update
+			var partysize = Math.floor(Math.random() * (config.Rich_Presence.maxpartysize - 0 + 1)) + 0;
+			// Resetting the timer
+			var t1 = new Date();
+			var t2 = new Date ( t1 );
+			t2.setSeconds(t1.getSeconds() + config.Rich_Presence.countdown_start);
+			// Setting the activity again with updated values	
+			rpc.setActivity({
+				details: config.Rich_Presence.details,
+				state: config.Rich_Presence.state,
+				largeImageKey: config.Rich_Presence.file_bannername,
+				largeImageText: config.Rich_Presence.bannername,
+				smallImageKey: config.Rich_Presence.file_username,
+				smallImageText: config.Rich_Presence.username,
+				instance: false,
+				partySize: partysize,
+				partyMax: config.Rich_Presence.maxpartysize,
+				startTimestamp: t1,
+				endTimestamp: t2
+			}).then(console.clear(), console.log(banner), console.log(`Updated the RPC ${++config.Dont_Touch.updatecounter} time(s)!`)).catch(err => {});
+		}, (config.Rich_Presence.Refresh_time * 1000));
 	}
 });
 rpc.login(config.Client_Id).catch(console.error);
